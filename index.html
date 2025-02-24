@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Components Case Study</title>
+    <link rel="stylesheet" href="https://use.typekit.net/hbu1pct.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <h3 tabindex="0">[cs1300] </h3>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links"
+            tabindex="0">☰</button>
+        <ul id="nav-links">
+            <li><b><a href="#introduction" aria-label="Go to Introduction section" tabindex="0">Introduction</a></b>
+            </li>
+            <li><b><a href="#part-1" aria-label="Go to Part 1: Input" tabindex="0">Part 1: Input</a></b></li>
+            <li><b><a href="#part-2" aria-label="Go to Part 2: Output" tabindex="0">Part 2: Output</a></b></li>
+            <li><b><a href="#part-3" aria-label="Go to Part 3: State Models and Component Redesign" tabindex="0">Part 3:
+                        State Models & Component Redesign</a></b></li>
+            <li><b><a href="#part-4" aria-label="Go to Part 4: Reflection" tabindex="0">Part 4: Reflection</a></b></li>
+        </ul>
+    </nav>
+
+    <main class="container" role="main">
+        <section id="introduction" class="section">
+            <div class="hero-heading">
+                <h1>Accessible Components: Dropdown Sort</h1>
+            </div>
+            <div class="white-box">
+                <p>
+                    Have you ever been online shopping and needed to sort items from <b>low to high prices</b>,
+                    or find the <b>best-rated</b> products? You click on a dropdown menu, expecting it to
+                    work seamlessly—but sometimes, it doesn’t. Maybe you can’t navigate it with your keyboard,
+                    or the options feel clunky on your phone.
+                </p>
+
+                <p>
+                    Dropdown menus are <b>small but powerful</b> components in user interfaces. They help us
+                    organize and filter content, but if they’re not designed well, they can become
+                    frustrating barriers.
+                </p>
+
+                <p>
+                    This case study takes a deep dive into how different platforms—<b>Amazon, Depop, and
+                        Sephora</b>—handle dropdown sorting. We'll explore their <b>usability, accessibility, and design
+                        choices</b>
+                    to see <b>what works, what doesn’t</b>, and how they could be improved.
+                </p>
+            </div>
+
+
+            <div class="image-row">
+
+                <div class="image-container">
+                    <img src="amazon.png" alt="Amazon Default" class="default-img">
+                    <img src="amazon_back.png" alt="Amazon Hover" class="hover-img">
+                </div>
+                <div class="image-container">
+                    <img src="depop.png" alt="Depop Default" class="default-img">
+                    <img src="depop_back.png" alt="Depop Hover" class="hover-img">
+                </div>
+                <div class="image-container">
+                    <img src="sephora.png" alt="Sephora Default" class="default-img">
+                    <img src="sephora_back.png" alt="Sephora Hover" class="hover-img">
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+        <div class="transition-text">
+            <p>
+                Dropdowns might seem simple, but the way we interact with them—whether by
+                <b>clicking, tapping, or using a keyboard</b>—can make or break a user’s experience.
+                Let's begin by looking at <b>input methods</b>: how these menus
+                behave when using a <b>mouse, keyboard, or touchscreen</b> across different platforms.
+            </p>
+        </div>
+
+        <div class="part-1-container">
+            <section id="part-1" class="section">
+
+                <h2 class="section-title">Part 1: Input</h2>
+
+                <div class="white-box compact-box">
+                    <p>
+                        <b>Dropdown menus</b> are essential UI components that allow users to make selections
+                        from a list of options. A well-designed dropdown must support multiple input methods,
+                        including <b>mouse, keyboard, and touch interactions</b>.
+                    </p>
+
+                    <p>
+                        Below is an analysis of how dropdown menus function in <b>Sephora, Depop, and Amazon</b>,
+                        addressing their usability across different input methods.
+                    </p>
+
+                    <!-- Callout Note -->
+                    <div class="note-box">
+                        <p><b>Note:</b> In each screenshot, the dropdown states are highlighted with a <b>red border</b>
+                            for
+                            visibility!
+                            These borders are not actually part of the original interface.</p>
+                    </div>
+                </div>
+                <div class="amazon-container">
+                    <section id="amazon-analysis" class="section">
+
+                        <!-- Amazon Logo in a Styled Box -->
+                        <div class="logo-box">
+                            <img src="amazon_logo.png" alt="Amazon Logo">
+                        </div>
+
+                        <!-- Media Container with Box Styling -->
+                        <div class="media-box">
+                            <div class="media-container">
+                                <figure>
+                                    <img src="amazon_closed.png" alt="Amazon Sort Dropdown (Closed)">
+                                    <figcaption>Amazon's default sort dropdown menu</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <img src="amazon_open.png" alt="Amazon Sort Dropdown (Open)">
+                                    <figcaption>Dropdown menu expanded with highlighted selection</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <video controls>
+                                        <source src="amazon_mouse_interaction.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <figcaption>Mouse interaction with Amazon's sort dropdown</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <video controls>
+                                        <source src="amazon_keyboard_interaction.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <figcaption>Keyboard navigation in Amazon's sort dropdown</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <!-- Scrollable Timeline-Style Table -->
+                        <div class="table-container">
+                            <table class="timeline-table">
+                                <thead>
+                                    <tr>
+                                        <th>Input Method</th>
+                                        <th>Interaction & Behavior</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b>Mouse/Touchpad</b></td>
+                                        <td>
+                                            <ul>
+                                                <li>Amazon’s dropdown menu starts with <b>Sort by: Featured</b>.</li>
+                                                <li>Sort icon resembles a <b>downward "V"</b>.</li>
+                                                <li>Clicking opens a <b>left-aligned list</b> with the selected option
+                                                    highlighted in
+                                                    <b>light blue</b>.
+                                                </li>
+                                                <li>Hovering changes background color to <b>faded grey</b>.</li>
+
+                                                <li>Scrolling while dropdown is open still scrolls the entire page, but
+                                                    <b>focus
+                                                        highlight
+                                                        remains persistent</b>.
+                                                </li>
+                                                <li>Right-clicking copies full text, dragging copies a filter result
+                                                    link.
+                                                </li>
+                                                <li><b>Highly accessible</b> in terms of functionality.</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>Keyboard Interaction</b></td>
+                                        <td>
+                                            <ul>
+                                                <li>Amazon has <b>strong keyboard navigation support</b>.</li>
+                                                <li>Users can navigate elements <b>horizontally</b> before moving to the
+                                                    next
+                                                    row (like
+                                                    reading).</li>
+                                                <li>Each element receives a <b>dark blue outline</b> to indicate focus.
+                                                </li>
+                                                <li>Pressing <b>Enter</b> while focused on "Sort by" opens the dropdown.
+                                                </li>
+                                                <li>Navigation can be done using <b>Tab</b> or <b>Arrow Keys</b>.</li>
+                                                <li>Selected options retain a <b>dark blue highlight</b>.</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>Touch Interaction</b></td>
+                                        <td>
+                                            <ul>
+                                                <li>Amazon’s <b>mobile app</b> has a different dropdown implementation.
+                                                </li>
+                                                <li>Users must tap the <b>Filter</b> button, then scroll down to find
+                                                    the
+                                                    "Sort
+                                                    By" option.
+                                                </li>
+                                                <li>The dropdown is <b>grouped with other filters</b> rather than
+                                                    standing
+                                                    alone.</li>
+                                                <li>Users must confirm selection with a <b>blue button</b> showing the
+                                                    number of
+                                                    results.
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Reflection Section -->
+                        <div class="reflection-box">
+                            <p>
+                                Amazon’s sort dropdown has <b>clear, consistent behavior</b> across different input
+                                methods.
+                                The <b>mouse and keyboard interactions</b> are well-supported, with clear hover states,
+                                focus
+                                indicators, and
+                                an intuitive layout.
+                            </p>
+                            <p>
+                                However, the <b>mobile app experience</b> differs significantly from the desktop
+                                version.
+                                The
+                                sort
+                                function is
+                                <b>harder to locate</b>, requiring users to go through the filter menu.
+                            </p>
+                            <p>
+                                Overall, Amazon's dropdown is <b>highly functional</b> and maintains <b>clearnability,
+                                    memorability,
+                                    and
+                                    efficiency</b> for desktop users. The mobile experience, however, could be <b>more
+                                    intuitive</b>.
+                            </p>
+                        </div>
+                    </section>
+
+
+
+            </section>
+
+
+            <!-- Depop Section Wrapped in a Container -->
+            <div class="depop-container">
+                <section id="depop-analysis" class="section">
+
+                    <!-- Depop Logo in a Styled Box -->
+                    <div class="logo-box depop-logo-box">
+                        <img src="depop_logo.png" alt="Depop Logo">
+                    </div>
+
+                    <!-- Media Content: Images & Videos -->
+                    <div class="media-box depop-media-box">
+                        <div class="media-container">
+                            <figure>
+                                <img src="depop_closed.png" alt="Depop Sort Dropdown (Closed)">
+                                <figcaption>Depop's default sort dropdown menu</figcaption>
+                            </figure>
+
+                            <figure>
+                                <img src="depop_open.png" alt="Depop Sort Dropdown (Open)">
+                                <figcaption>Dropdown menu expanded with checkboxes</figcaption>
+                            </figure>
+
+                            <figure>
+                                <video controls>
+                                    <source src="depop_mouse_interaction.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <figcaption>Mouse interaction with Depop's sort dropdown</figcaption>
+                            </figure>
+
+                            <figure>
+                                <video controls>
+                                    <source src="depop_keyboard_interaction.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <figcaption>Keyboard interaction with Depop's sort dropdown</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- Scrollable Timeline-Style Table -->
+                    <div class="table-container depop-table">
+                        <table class="timeline-table">
+                            <thead>
+                                <tr>
+                                    <th>Input Method</th>
+                                    <th>Interaction & Behavior</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><b>Mouse/Touchpad</b></td>
+                                    <td>
+                                        <ul>
+                                            <li>Depop’s dropdown menu uses <b>checkboxes</b> for each option.</li>
+                                            <li>Dropdown remains <b>open while toggling options</b>.</li>
+                                            <li>Only one checkbox can be selected, but multiple options <b>appear
+                                                    selectable</b>.
+                                            </li>
+                                            <li>Button <b>changes border color</b> when hovered, indicating
+                                                interactivity.
+                                            </li>
+                                            <li>Hovered options <b>change to light gray</b> for selection feedback.</li>
+                                            <li>Dropdown menu remembers last selection <b>while scrolling</b>,
+                                                highlighting
+                                                the last
+                                                hovered option.</li>
+                                            <li>Text inside dropdown can be copied, but clicking <b>selects the checkbox
+                                                    as
+                                                    well</b>.</li>
+                                            <li>Sort icon resembles <b>up and down arrows</b>.</li>
+                                            <li>Cursor changes from <b>pointer to pointing finger</b> over options.</li>
+                                            <li>Default sorting is <b>Sort by: Relevance</b>.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Keyboard Interaction</b></td>
+                                    <td>
+                                        <ul>
+                                            <li><b>No keyboard accessibility</b> for sorting functionality.</li>
+                                            <li>Keyboard navigation is limited to <b>search bar and shopping cart</b>.
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Touch Interaction</b></td>
+                                    <td>
+                                        <ul>
+                                            <li>Depop’s <b>mobile sort feature resembles the desktop version</b>.</li>
+                                            <li>Instead of checkboxes, the mobile version uses <b>radio buttons</b>.
+                                            </li>
+                                            <li>When selected, a <b>full-screen pop-up appears</b>.</li>
+                                            <li>A <b>"Show Results" button</b> is required to apply selection.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Reflection Section -->
+                    <div class="reflection-box depop-reflection">
+                        <p>
+                            Depop’s sort dropdown has a <b>unique checkbox system</b>, making it feel interactive.
+                            However,
+                            the
+                            <b>lack of keyboard support</b> is a major accessibility flaw.
+                        </p>
+                        <p>
+                            The <b>hover effects and persistent selection memory</b> enhance usability. However, the
+                            checkbox UI
+                            <b>could be misleading</b>, as it suggests multiple selections are possible.
+                        </p>
+                        <p>
+                            The <b>mobile experience</b> is streamlined with a <b>full-screen pop-up</b> and <b>radio
+                                buttons</b>,
+                            making it <b>more intuitive than the desktop version</b>.
+                        </p>
+                    </div>
+                </section>
+            </div>
+            <div class="sephora-container">
+                <section id="sephora-analysis" class="section">
+                    <div class="logo-box sephora-logo-box">
+                        <img src="sephora_logo.png" alt="Sephora Logo">
+                    </div>
+
+                    <div class="media-box sephora-media-box">
+                        <div class="media-container">
+                            <figure>
+                                <img src="sephora_closed.png.png" alt="Sephora Sort Dropdown (Closed)">
+                                <figcaption>Sephora's default sort dropdown menu</figcaption>
+                            </figure>
+
+                            <figure>
+                                <img src="sephora_open.png.png" alt="Sephora Sort Dropdown (Open)">
+                                <figcaption>Dropdown menu expanded with underlined options</figcaption>
+                            </figure>
+
+                            <figure>
+                                <video controls>
+                                    <source src="sephora_mouse_interaction.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <figcaption>Mouse interaction with Sephora's sort dropdown</figcaption>
+                            </figure>
+
+                            <figure>
+                                <video controls>
+                                    <source src="sephora_keyboard_interaction.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <figcaption>Keyboard interaction with Sephora's sort dropdown</figcaption>
+                            </figure>
+                        </div>
+
+                    </div>
+
+                    <div class="table-container sephora-table">
+                        <table class="timeline-table">
+                            <thead>
+                                <tr>
+                                    <th>Input Method</th>
+                                    <th>Interaction & Behavior</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><b>Mouse/Touchpad</b></td>
+                                    <td>
+                                        <ul>
+                                            <li>Sephora’s dropdown menu starts with <b>Sort by: Relevance</b>.</li>
+                                            <li>Sort icon resembles a <b>downward 'V'</b>.</li>
+                                            <li>Clicking opens a <b>left-aligned list</b> with the selected option
+                                                clearly
+                                                labeled as
+                                                default.</li>
+                                            <li>Hovering over an option <b>underlines the text</b>, providing visual
+                                                feedback.
+                                            </li>
+                                            <li>When scrolling while hovering, the underline persists to show the last
+                                                hovered
+                                                option.
+                                            </li>
+                                            <li>Right-clicking <b>selects the option</b> but also highlights the word
+                                                upon
+                                                reopening the
+                                                menu.</li>
+                                            <li>Cursor changes from <b>pointer to pointing finger</b> when hovering over
+                                                the
+                                                dropdown
+                                                and options.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Keyboard Interaction</b></td>
+                                    <td>
+                                        <ul>
+                                            <li><b>No keyboard accessibility</b> for sorting functionality.</li>
+                                            <li>Users can only navigate to <b>search bars</b> (main webpage search,
+                                                Sephora
+                                                search bar,
+                                                and email address prompt in footer).</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Touch Interaction</b></td>
+                                    <td>
+                                        <ul>
+                                            <li>The <b>Sephora app</b> implements sorting differently from the website.
+                                            </li>
+                                            <li>When selecting <b>Sort: Relevance</b>, a <b>full-screen Filter & Sort
+                                                    menu</b>
+                                                appears.
+                                            </li>
+                                            <li>The menu includes <b>radio buttons</b> for sorting options and
+                                                additional
+                                                filter
+                                                categories below.</li>
+                                            <li>A <b>Show Results</b> button at the bottom right confirms the selection.
+                                            </li>
+                                            <li>The app integrates sorting with other filters, making it a combined
+                                                functionality.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="reflection-box sephora-reflection">
+                        <p>
+                            Sephora’s sort dropdown has a <b>simple yet visually distinct</b> interaction, with the
+                            underline
+                            effect
+                            providing clear feedback. However, the lack of <b>keyboard accessibility</b> is a major
+                            usability
+                            issue.
+                        </p>
+                        <p>
+                            The <b>persistent hover underline</b> improves user experience by maintaining visibility of
+                            the
+                            last
+                            hovered
+                            option. However, right-click behavior is inconsistent—selecting an option but also
+                            highlighting
+                            text
+                            upon
+                            reopening the menu.
+                        </p>
+                        <p>
+                            The <b>mobile app experience</b> is significantly different from the desktop version, with
+                            sorting
+                            embedded
+                            into the filtering system. While this integrates features well, it <b>adds extra steps</b>
+                            for
+                            users
+                            only
+                            looking to sort items.
+                        </p>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="transition-text">
+            <p>
+                Understanding <b>how users interact with dropdown menus</b> is just one part of the equation—
+                how these menus <b>respond</b> is just as important. A dropdown should <b>clearly indicate</b>
+                when an option has been selected, what is currently active, and whether any changes have taken effect.
+            </p>
+
+            <p>
+                <b>Amazon and Sephora</b> at least attempt to provide <b>some form of feedback</b>—whether it’s a
+                highlighted selection or an updated button label. But <b>Depop?</b> <b>It leaves users guessing.</b>
+                Selections don’t always update visibly, keyboard users are left behind entirely, and the checkbox
+                behavior feels unintuitive.
+            </p>
+
+            <p>
+                In the next section, we’ll examine <b>how these dropdowns communicate state changes</b>—or fail to do
+                so.
+                We’ll look at <b>visual cues, screen reader support, and interactive feedback</b> to determine which
+                platforms guide users effectively and which ones create <b>unnecessary friction.</b>
+            </p>
+        </div>
+
+
+        <div class="part-2-container">
+
+            <section id="part-2" class="section">
+                <h2 class="section-title">Part 2: Output</h2>
+
+                <div class="white-box compact-box">
+                    <p>
+                        Outputs indicate <b>how a dropdown menu visually or audibly conveys its current state</b>. This
+                        includes changes in <b>color,
+                            highlights, borders, labels, and screen reader</b> output. Below is a comparison of how
+                        Sephora,
+                        Depop, and Amazon handle
+                        state changes.
+                    </p>
+
+
+                </div>
+
+                <!-- Table Container -->
+                <div class="table-container part-2-table-container">
+                    <table class="timeline-table part-2-table">
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Mouse/Touchpad Interaction</th>
+                                <th>Keyboard Interaction</th>
+                                <th>Voice Over</th>
+                                <th>Touch Interaction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <b>Amazon</b>
+                                    <br>
+                                    <img src="amazon_table_logo.png" alt="Amazon Logo" class="table-platform-logo">
+                                </td>
+
+                                </td>
+                                <td>- Selecting a new option <b>closes the dropdown</b>, <b>refreshes the page</b>, and
+                                    <b>updates the button
+                                        text</b>.
+
+                                    <div>
+                                        <p></p>
+                                    </div>
+
+                                    - A <b>blue outline</b> appears around the dropdown to indicate focus.
+                                </td>
+                                <td>- Full <b>keyboard navigation</b> is supported, following a <b>horizontal reading
+                                        order</b>.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - Each element
+                                    receives a
+                                    <b>blue or orange focus outline</b>, depending on background contrast.
+                                </td>
+
+                                <td>- Voice over correctly announces dropdown presence and <b>selection
+                                        instructions</b>.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - However,
+                                    <b>focus order is inconsistent</b>, jumping between sections. Some items are
+                                    announced
+                                    as <b>“selectable
+                                        null.”</b>
+                                </td>
+                                <td>- Selecting an option <b>rearranges the sort order</b> but provides <b>no clear
+                                        indicator</b> that a
+                                    change has occurred.
+
+                                    <div>
+                                        <p></p>
+                                    </div>- The <b>"Show Results" button</b> lacks visual feedback after
+                                    selection.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - Users <b>can copy text</b> by long pressing.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Depop</b>
+                                    <br>
+                                    <img style="margin-top: 45px;" src="depop_table_logo.png" alt="Depop Logo"
+                                        class="table-platform-logo">
+                                </td>
+
+                                <td>- Dropdown <b>remains open</b> while selecting options, allowing multiple toggles.
+                                    <b>- Mouse cursor changes</b> when hovering over clickable elements.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - However, the
+                                    <b>button text does not
+                                        update</b>
+                                    after selection, requiring <b>manual dropdown reopening</b> to check the current
+                                    selection.
+                                </td>
+                                <td><b>- No keyboard navigation</b> for sorting functionality.
+
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - Only the <b>search bar and
+                                        cart</b> are
+                                    accessible,
+                                    but they <b>lack usability feedback</b>.
+
+                                    <div>
+                                        <p></p>
+                                    </div> - Tabbing opens a <b>random language
+                                        dropdown</b>, which is
+                                    unclear in functionality.
+                                </td>
+                                <td><b>- Focus is misaligned</b>, making it difficult to track.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - The screen reader only
+                                    announces <b>"button"
+                                        or "link"</b>,
+                                    making it unclear what is being interacted with.
+
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    <b>- Tab often does not work</b>, but
+                                    <b>up/down keys
+                                        unexpectedly navigate some elements</b>.
+                                </td>
+                                <td><b>- Radio buttons highlight in bold</b> when selected.
+
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - Pressing the <b>"Show Results"
+                                        button"</b> lacks
+                                    animations,
+                                    but a <b>brief loading symbol</b> appears before results update.
+
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    <b>- Users cannot
+                                        copy
+                                        text</b> from the
+                                    dropdown.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Sephora</b>
+                                    <br>
+                                    <img style="margin-top: 45px; width: 500px;" src="sephora_table_logo.png"
+                                        alt="Sephora Logo" class="table-platform-logo">
+                                </td>
+                                <td>- Selecting a new option <b>reloads the page</b> and <b>updates the button text</b>.
+                                    <div>
+                                        <p></p>
+                                    </div>
+
+                                    - The <b>previous selection is bolded</b>, but the contrast is <b>too subtle</b> for
+                                    all
+                                    users to perceive
+                                    clearly.
+                                    <div>
+                                        <p></p>
+                                    </div>
+
+                                    - The dropdown <b>lacks underlining</b>, making it unclear that the text is
+                                    clickable.
+                                </td>
+                                <td><b>- No keyboard navigation</b> available for sorting. Only the <b>search bars</b>
+                                    and
+                                    <b>footer email
+                                        field</b> are accessible.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    <b>- Up/down keys scroll the page</b> instead of interacting with the dropdown.
+                                </td>
+                                <td>- Voice over <b>successfully navigates</b> the dropdown when enabled.
+
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - It provides
+                                    <b>structured focus
+                                        order</b>,
+                                    describes <b>item position</b> (e.g., "1 of 6"), and <b>instructs on selection
+                                        keys</b>.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - However,
+                                    <b>focus initially jumps around</b> before settling into a <b>linear pattern</b>.
+                                </td>
+                                <td>- Selected options <b>turn bold</b> with a <b>filled radio button</b>.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - The <b>"Show Results" button</b> <b>grays out</b> after selection, providing
+                                    <b>clear
+                                        feedback</b>.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    - The <b>sort label updates visually</b>, and the <b>button turns black</b> to
+                                    indicate an
+                                    active filter.
+                                    <div>
+                                        <p></p>
+                                    </div>
+                                    <b>- Users cannot copy text.</b>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+            </section>
+
+        </div>
+
+        <div class="transition-text">
+            <p>
+                Across <b>Amazon, Depop, and Sephora</b>, dropdown menus are a core part of the shopping experience—
+                helping users find the right products faster. But as we’ve seen, not all dropdowns are built equally.
+                <b>Amazon’s implementation</b> is structured and keyboard-friendly, <b>Sephora’s</b> is simplistic but
+                inconsistent, and <b>Depop?</b> Well, it struggles the most.
+            </p>
+
+            <p>
+                From <b>missing keyboard navigation</b> to <b>confusing visual feedback</b>, Depop’s dropdown creates
+                unnecessary friction—especially for users who rely on assistive technology. And in e-commerce, where
+                ease of navigation <b>directly impacts engagement and sales</b>, a frustrating interaction can be the
+                difference between a purchase and an abandoned cart.
+            </p>
+
+            <p>
+                So, let’s take a step back. How does Depop’s dropdown actually function on a <b>technical level</b>?
+                What <b>states</b> does it transition through as users interact with it via mouse or keyboard?
+                By mapping out these <b>state models</b>, we can pinpoint <b>where the breakdown happens</b>—and lay
+                the groundwork for a more intuitive, accessible redesign.
+            </p>
+        </div>
+
+
+        <div class="part-3-container">
+            <section id="part-3" class="section">
+                <h2 class="section-title">Part 3: State Models & Component Redesign</h2>
+
+                <div style="max-height: 315px;" class="white-box compact-box">
+                    <p>
+                        In <b>Parts 1 and 2</b>, we analyzed how <b>Amazon, Depop, and Sephora</b> handle dropdown
+                        sorting, evaluating their <b>usability, accessibility, and state feedback</b>. Now, we’ll take
+                        those insights and think critically about how users interact with this component—starting with
+                        <b>state models</b> that capture its different interaction modes.
+                    </p>
+
+                    <p>
+                        For this section, we will be focusing on <b>Depop’s dropdown component</b>, as our analysis
+                        has shown it <b>struggles the most</b>. With <b>inconsistent interactions, missing keyboard
+                            navigation, and misleading selection behavior</b>, Depop’s dropdown creates friction that
+                        could easily be avoided. By mapping out its <b>state transitions</b>, we can pinpoint where
+                        these usability issues occur—and start thinking about <b>how to improve them</b>.
+                    </p>
+                </div>
+
+                <!-- Media Content: Images & Videos -->
+                <div class="media-box state-model-media-box">
+                    <div stye="color: black;" class="media-container">
+                        <figure>
+                            <img src="mouse-user-original.png" alt="Depop Dropdown Component: Mouse User (Original)">
+                            <figcaption>Depop Dropdown Component: Mouse User (Original)</figcaption>
+                        </figure>
+
+                        <figure>
+                            <img src="mouse-user-revised.png" alt="Depop Dropdown Component: Mouse User (Revised)">
+                            <figcaption>Depop Dropdown Component: Mouse User (Revised)</figcaption>
+                        </figure>
+
+                        <figure>
+
+                            <img source src="keyboard-user-original.png"
+                                alt="Depop Dropdown Component: Keyboard User (Original)">
+
+
+                            <figcaption>Depop Dropdown Component: Keyboard User (Original)</figcaption>
+                        </figure>
+
+                        <figure>
+
+                            <img src="keyboard-user-revised.png"
+                                alt="Depop Dropdown Component: Keyboard User (Revised)">
+
+
+                            <figcaption>Depop Dropdown Component: Keyboard User (Revised)</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="white-box compact-box">
+                    <h3>Redesigning Depop's Sort Dropdown</h3>
+
+                    <p>
+                        Depop’s current dropdown has <b>several usability issues</b>, including a lack of <b>keyboard
+                            support</b>,
+                        <b>unclear selection feedback</b>, and checkbox behavior that <b>misleads users into thinking
+                            multiple
+                            selections are possible</b>. Our redesign enhances <b>clarity, efficiency, and
+                            accessibility</b> by
+                        replacing checkboxes with <b>radio buttons</b>, improving selection feedback, and aligning with
+                        Depop’s
+                        existing UI patterns.
+                    </p>
+
+
+                    <p>
+                        Below, the first image displays the <b>original dropdown</b> in both its <b>default</b> and
+                        <b>clicked</b>
+                        states. The second image showcases the <b>revised version</b> with annotations detailing the
+                        improvements.
+                    </p>
+
+                    <p>
+                        In making these changes, we also considered <b>intentional trade-offs</b>. One key decision was
+                        removing checkboxes
+                        in favor of radio buttons. While checkboxes could allow users to see multiple options at a
+                        glance, they created
+                        confusion about whether multiple selections were possible. The redesign opts for clarity over
+                        flexibility, ensuring
+                        users immediately understand that only one option can be selected at a time. Additionally, while
+                        keeping the
+                        dropdown open after selection might reduce friction for some users, it led to uncertainty about
+                        whether changes were
+                        applied. The redesign closes the dropdown upon selection, providing a clearer indication that
+                        the sorting action has
+                        taken effect.
+                    </p>
+
+                </div>
+
+                <!-- Image Comparison -->
+                <div class="media-box state-model-media-box">
+                    <div class="media-container">
+                        <figure>
+                            <img src="initial-state.png" alt="Original Depop Dropdown (Default & Clicked States)">
+                            <figcaption>Original Depop Dropdown: Lacks keyboard navigation, unclear selection feedback.
+                            </figcaption>
+                        </figure>
+
+                        <figure style="align-self: center;">
+                            <img src="revised-state.png" alt="Revised Depop Dropdown (Default & Clicked States)">
+                            <figcaption>Revised Depop Dropdown: Improved clarity, selection feedback, and accessibility.
+                                <b>Includes
+                                    annotations.</b>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+
+            </section>
+        </div>
+        <div class="transition-text">
+            <p>
+                Depop’s dropdown redesign highlights an important reality of e-commerce:
+                <b>small design choices can have a big impact</b>. From missing feedback to misleading checkboxes,
+                minor usability issues added up to create an experience that was frustrating rather than seamless.
+            </p>
+
+            <p>
+                When navigation isn't intuitive, users hesitate. When accessibility is overlooked, users are excluded.
+                And when a simple sort feature creates confusion, it disrupts the entire shopping flow.
+                <b>In a competitive e-commerce space, these friction points can be the difference between conversion and
+                    abandonment.</b>
+            </p>
+
+            <p>
+                Our redesign demonstrates that <b>thoughtful, incremental changes</b>—like improving contrast,
+                refining button states, and aligning with platform-wide patterns—can <b>boost usability, efficiency,
+                    and accessibility</b> without a complete overhaul. These principles don’t just apply to Depop’s
+                dropdown;
+                they are relevant to <b>every interface in digital retail</b>.
+            </p>
+
+            <p>
+                In the final section, we’ll step back and reflect on <b>what this case study reveals about accessibility
+                    in
+                    e-commerce</b>.
+                If a single dropdown menu can cause usability roadblocks, what does that say about the broader digital
+                shopping
+                experience?
+                And more importantly, how can companies move toward <b>more inclusive, user-friendly designs</b> that
+                benefit
+                everyone?
+            </p>
+        </div>
+
+        <div class="part-4-container">
+            <section id="part-4" class="section">
+                <h2 class="section-title">Part 4: Reflection</h2>
+
+                <div style="max-height: 2050px;" class="white-box compact-box">
+                    <p>
+
+                        Depop’s original dropdown suffered from <b>unclear selection behavior, misleading checkboxes,
+                            and no
+                            keyboard support</b>, making it difficult to use for anyone who wasn’t clicking with a
+                        mouse. The
+                        revised design addresses these issues by replacing checkboxes with <b>radio buttons</b> (which
+                        more clearly
+                        indicate single-selection behavior), improving contrast, and ensuring <b>consistency with
+                            Depop’s existing
+                            UI patterns</b>. These changes make sorting <b>more intuitive, efficient, and accessible</b>
+                        for all
+                        users.
+                    </p>
+
+                    <p>
+
+                        One of the biggest accessibility gaps in the original design was the <b>lack of keyboard
+                            navigation</b>.
+                        Without it, users who rely on screen readers or tab-based interactions couldn’t use the dropdown
+                        at all. The
+                        redesign introduces <b>keyboard support, higher contrast</b> between selected and unselected
+                        options, and
+                        <b>clearer visual indicators</b>—all of which <b>remove friction for users with motor
+                            impairments, low
+                            vision, or cognitive disabilities</b>.
+                    </p>
+
+                    <p>
+
+                        Kat Holmes describes disability as a <b>"mismatched interaction between the features of a
+                            person's body and
+                            the features of the environment in which they live."</b> The original Depop dropdown created
+                        this exact
+                        kind of mismatch by assuming <b>all users can easily click with a mouse</b>. Anyone who
+                        couldn’t—whether due
+                        to motor limitations, vision impairments, or personal preference—was effectively shut out. The
+                        redesign
+                        closes this gap by <b>supporting multiple input methods</b>, ensuring <b>clear visual
+                            feedback</b>, and
+                        making the dropdown <b>usable for a broader range of people</b>.
+                    </p>
+
+                    <p>
+                        This idea of mismatches is everywhere in UI design. A website that relies only on <b>hover
+                            effects</b>
+                        creates a mismatch for touchscreen users who can’t hover. A form that <b>requires a mouse
+                            click</b> but
+                        doesn’t support the keyboard’s "Enter" key creates a mismatch for users who navigate with a
+                        keyboard. Every
+                        design choice either <b>increases or decreases</b> these mismatches—and inclusive design is
+                        about
+                        <b>actively reducing them</b> so that more people can interact with technology on their own
+                        terms.
+                    </p>
+
+                    <p>
+
+                        - <b>Amazon’s keyboard navigation</b> allows users to sort items using arrow keys and
+                        Enter—<b>removing
+                            barriers for screen reader users</b> and improving efficiency for anyone who prefers the
+                        keyboard.<br>
+                        - <b>Depop’s lack of selection feedback</b> creates a mismatch for users with cognitive
+                        disabilities, who
+                        rely on clear, <b>confirming indicators</b> to know their action was successful.
+                    </p>
+
+                    <p>
+
+                        Mouse and touch interactions tend to be <b>prioritized in UI development</b> because they’re the
+                        most
+                        common. But this often comes at the expense of <b>keyboard and screen reader users</b>, creating
+                        <b>unintended exclusion</b>. When sorting through products, a user should never have to wonder
+                        if their
+                        selection was registered or struggle to navigate a dropdown because it <b>wasn’t designed for
+                            them</b>.
+                    </p>
+
+                    <p>
+                        At the core of this redesign is the idea that <b>small design choices can have a huge
+                            impact</b>. A dropdown
+                        might seem like a tiny detail, but in e-commerce, where <b>friction directly affects engagement
+                            and
+                            sales</b>, accessibility isn’t just about compliance—it’s about <b>creating a better
+                            experience for
+                            everyone</b>. The more we recognize mismatches and design around them, the more we move
+                        toward a digital
+                        world that <b>includes, rather than excludes, by default</b>.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+
+    </main>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.navbar ul');
+        const menuItems = document.querySelectorAll('.navbar ul a');
+
+        // Toggle menu on button click or Enter key
+        function toggleMenu(event) {
+            if (event.type === "click" || event.key === "Enter") {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === "true";
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('keydown', toggleMenu); // Allow Enter key to toggle menu
+
+        // Allow pressing Enter to follow links
+        menuItems.forEach(item => {
+            item.addEventListener('keydown', (event) => {
+                if (event.key === "Enter") {
+                    window.location.href = item.getAttribute('href');
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".navbar ul li a");
+
+            function highlightNav() {
+                let scrollPosition = window.scrollY;
+
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop - 100; // Adjust for fixed navbar
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute("id");
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navLinks.forEach((link) => {
+                            link.classList.remove("active");
+                            if (link.getAttribute("href").includes(sectionId)) {
+                                link.classList.add("active");
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", highlightNav);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const videos = document.querySelectorAll("video");
+
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play();
+                    } else {
+                        entry.target.pause();
+                        entry.target.currentTime = 0; // Reset video when out of view
+                    }
+                });
+            }, { threshold: 0.5 }); // Adjust threshold (0.5 = 50% of video must be in view)
+
+            videos.forEach(video => {
+                videoObserver.observe(video);
+            });
+        });
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

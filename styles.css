@@ -1,0 +1,948 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+    --beige: #f5ebe0;
+
+    --pink-light: #FF9900;
+    --primary: #69abdd;
+    /* Amazon's signature orange */
+
+    /* A light blue complementary color */
+    --text-primary: #201a19;
+    --text-secondary: #6a2e35;
+    --hover-highlight: #e8a4a2;
+}
+
+
+/* Body Styling */
+body {
+    font-family: "Trebuchet MS", Tahoma, sans-serif;
+    background-color: var(--beige);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--beige);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Navbar Title */
+.navbar h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Navbar Links */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 17px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background: var(--hover-highlight);
+    transform: translateY(-2px);
+}
+
+/* Responsive Navbar */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+}
+
+@media screen and (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        background: var(--beige);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    .navbar ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+.navbar ul li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 17px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Highlight the active section */
+.navbar ul li a.active {
+    background: var(--hover-highlight);
+    font-weight: bold;
+    color: var(--sephora-black);
+    /* Adjust for better contrast */
+}
+
+/* Main Content */
+.container {
+    width: 100%;
+    margin-top: 80px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* Full-Page Sections */
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding: 6rem 3rem 3rem;
+    width: 100%;
+}
+
+/* White Box */
+.white-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 90%;
+    text-align: left;
+    margin: 24px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-grow: 1;
+}
+
+/* White Box Hover */
+.white-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Row */
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -100px;
+    gap: -20pt;
+    width: 100%;
+    margin-bottom: -100px;
+
+}
+
+.image-row img {
+    flex: 1;
+    min-width: 375px;
+    max-width: 100%;
+    justify-content: center;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.6s;
+}
+
+/* Responsive Images */
+@media screen and (max-width: 768px) {
+    .image-row {
+        flex-direction: column;
+    }
+
+    .image-row img {
+        width: 90%;
+        max-width: 100%;
+
+    }
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    width: 380px;
+
+    margin-top: 25px;
+    height: auto;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 150%;
+    height: auto;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.image-container .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.image-container:hover .default-img {
+    opacity: 0;
+}
+
+.image-container:hover .hover-img {
+    opacity: 1;
+}
+
+
+/* Hero Title */
+.hero-heading h1 {
+    margin: 0;
+    font-size: clamp(28px, 5vw, 44px);
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    overflow: hidden;
+    display: inline-block;
+    border-right: 3px solid black;
+    white-space: nowrap;
+    /* Prevent wrapping during typing */
+    animation: typewriter 3s steps(35, end) forwards, blink 0.75s step-end infinite;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Typewriter Effect */
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* Blinking Cursor */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* Allow wrapping after animation */
+@media screen and (max-width: 768px) {
+    .hero-heading h1 {
+        white-space: normal;
+        /* Enable wrapping on small screens */
+        word-wrap: break-word;
+        border-right: none;
+        /* Remove cursor */
+    }
+}
+
+
+p {
+    margin-top: 15px;
+    font-size: clamp(14px, 1.2vw, 18px);
+    line-height: 1.6;
+    max-width: 100%;
+    text-align: justify;
+}
+
+/* Prevents Overlapping Elements */
+@media screen and (max-width: 1024px) {
+    .section {
+        padding: 4rem 2rem;
+    }
+
+    .white-box {
+        padding: 15px;
+        max-width: 95%;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+/* New Section Title Styling */
+.section-title {
+    font-family: "Georgia", serif;
+    /* More formal and distinct */
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--text-secondary);
+    text-align: left;
+    width: 100%;
+    max-width: 1800px;
+    padding-bottom: 10px;
+    margin-top: -75px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    /* Soft underline */
+    margin-bottom: 20px;
+}
+
+/* Reduce Space Between Sections */
+.section {
+    padding: 5rem 3rem 2rem;
+    /* Less top and bottom padding */
+}
+
+/* Reduce Margin of Section Dividers */
+.section::after {
+    margin: 0px auto 0;
+    /* Moves the divider up */
+}
+
+/* Centered Transition Text Styling */
+.transition-text {
+    width: 100%;
+    margin-top: 0px;
+    max-width: 1100px;
+    margin: 10px auto;
+    /* Adds space between sections */
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.2;
+    padding: 20px 0;
+    border-radius: 8px;
+    /* Slight rounding for smoothness */
+}
+
+/* Reduce top margin when screen is smaller */
+@media screen and (max-width: 768px) {
+    .transition-text {
+        font-size: 16px;
+        margin: 40px auto;
+        padding: 15px 0;
+    }
+}
+
+/* Compact White Box for Part 1 */
+.compact-box {
+    padding: 40px;
+    max-width: 100%;
+    /* Less padding */
+    font-size: 16px;
+    border-radius: 16px;
+    /* Keeps text proportional */
+
+    /* Reduces internal spacing */
+    max-height: 400px;
+    margin-bottom: 15px;
+}
+
+/* Media Grid Layout */
+.media-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.media-container figure {
+    text-align: center;
+}
+
+.media-container img,
+.media-container video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollable Timeline Table */
+.table-container {
+    max-width: 900px;
+    width: 100%;
+    overflow-x: auto;
+    /* Makes the table scrollable */
+    margin-top: 20px;
+    background: #fff;
+}
+
+.timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.timeline-table th,
+.timeline-table td {
+    padding: 15px 18px;
+    /* More even spacing */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-size: 16px;
+    vertical-align: top;
+    /* Aligns text to the top for consistency */
+}
+
+.timeline-table th {
+    background: var(--pink-light);
+    color: var(--text-secondary);
+    font-weight: bold;
+
+}
+
+/* Fix Bullet Point Alignment in Table */
+.timeline-table td ul {
+    margin: 0;
+    padding-left: 20px;
+    /* Ensures bullets are indented evenly */
+    list-style-type: disc;
+    /* Keeps standard bullet point style */
+
+}
+
+.timeline-table tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+/* Reflection Section with Hover Effect */
+.reflection-box {
+    max-width: 1125px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    background: var(--pink-light);
+    border-left: 5px solid var(--primary);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition */
+}
+
+/* Hover Effect: Slight Lift */
+.reflection-box:hover {
+    transform: translateY(-5px);
+    /* Moves up slightly */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+    /* Soft shadow */
+}
+
+/* Styling for Image/Video Captions */
+.media-container figcaption {
+    font-size: 14px;
+    /* Slightly smaller */
+    font-weight: bold;
+    /* Makes it stand out */
+    color: var(--text-secondary);
+    /* Keeps it readable */
+    margin-top: 5px;
+    /* Adds a little spacing */
+    text-align: center;
+    /* Keeps it aligned with media */
+}
+
+
+
+
+/* Box Styling for Media Section */
+.media-box {
+    max-width: 1125px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 25px;
+    background: var(--pink-light);
+    border-left: 5px solid var(--primary);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Media Grid Layout */
+.media-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    gap: 20px;
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+.media-container figure {
+    text-align: center;
+}
+
+.media-container img,
+.media-container video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect: Slight Lift */
+.media-box:hover {
+    transform: translateY(-5px);
+    /* Moves up slightly */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+    /* Soft shadow */
+}
+
+/* Note Box Styling */
+.note-box {
+    background: rgba(255, 233, 233, 0.8);
+    /* Light red for subtle visibility */
+    border-left: 5px solid var(--beige);
+    /* Uses primary color for consistency */
+    padding: 10px 15px;
+    border-radius: 13px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+
+/* Amazon Logo Box - Styled Like Reflection Box */
+.logo-box {
+    max-width: 1225px;
+    /* Keeps the box compact */
+    width: 110%;
+    height: 110px;
+    background: var(--primary);
+    /* Uses primary color */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /* Smooth rounded corners */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+    display: flex;
+    flex-direction: column;
+    /* Ensures image is on top */
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px;
+    /* Reduced top/bottom padding */
+    margin: 5px;
+    /* Centers the box */
+    margin-top: -80px;
+}
+
+
+.logo-box img {
+    max-width: 310px;
+    /* Keeps the logo nicely sized */
+    margin: 0pt;
+    height: auto;
+}
+
+/* Amazon Section Container */
+.amazon-container {
+    max-width: 1225px;
+    /* Limits width for readability */
+    width: 100%;
+    background: #fff;
+    /* White background for separation */
+    padding: 0px;
+    border-radius: 14px;
+    /* Rounded corners */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
+    margin: 40px auto;
+    /* Centers the section */
+}
+
+/* Depop Color Variables */
+:root {
+    --depop-red: #eb4034;
+    /* Vibrant red, matching Depop's branding */
+    --depop-dark: #2b2b2b;
+    /* Dark gray, similar to Depop's UI */
+    --depop-light-gray: #f5f5f5;
+    /* Soft gray for contrast */
+    --depop-hover: #c13527;
+    /* Slightly darker red for hover effects */
+}
+
+/* Depop Section Container */
+.depop-container {
+    max-width: 1225px;
+    width: 100%;
+    background: var(--depop-dark);
+    /* Dark gray for a unique background */
+    padding: 0px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    margin-top: -30px;
+
+    /* Ensures text remains readable */
+}
+
+
+/* Depop Logo Box */
+.depop-logo-box {
+    max-width: 1225px;
+    width: 110%;
+    height: 110px;
+    background: var(--depop-light-gray);
+    /* Uses primary color */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.depop-logo-box img {
+    max-width: 225px;
+    height: auto;
+}
+
+/* Remove Box from Depop Table */
+.depop-container .table-container {
+    background: var(--depop-light-gray);
+
+}
+
+/* Depop Media Box */
+.depop-media-box {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 25px;
+    background: var(--depop-red);
+    /* Uses Depop’s signature red */
+    border-left: 5px solid var(--depop-light-gray);
+    /* Darker red for depth */
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Depop Media Box */
+.state-model-media-box {
+    max-width: 1225px;
+    width: 110%;
+    margin-top: 30px;
+    color: #000000;
+    padding: 25px;
+    background: var(--depop-red);
+    /* Uses Depop’s signature red */
+    border-left: 5px solid var(--depop-red);
+    /* Darker red for depth */
+    border-radius: 10px;
+    border-color: #000000;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+/* Depop Reflection Box */
+.depop-reflection {
+    max-width: 1175px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    background: var(--depop-red);
+    /* Dark gray for contrast */
+    border-left: 5px solid var(--depop-light-gray);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--depop-light-gray);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effects */
+.depop-media-box:hover,
+.depop-reflection:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Depop Media Grid */
+.depop-media-box .media-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+    max-width: 100%;
+}
+
+.depop-media-box .media-container figure {
+    text-align: center;
+}
+
+.depop-media-box .media-container img,
+.depop-media-box .media-container video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Depop Table Styling */
+.depop-table {
+    background: var(--depop-light-gray);
+
+    border-radius: 0px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header */
+.depop-table th {
+    background: var(--depop-red);
+    color: white;
+    font-weight: bold;
+}
+
+/* Table Row Alternating Background */
+.depop-table tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Styling for Image/Video Captions */
+.depop-media-box figcaption {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--depop-dark);
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Depop Reflection Box - Override Text Color */
+.depop-container .reflection-box {
+    color: black;
+}
+
+:root {
+    --sephora-black: #000000;
+    --sephora-white: #ffffff;
+    --sephora-gray: #e5e5e5;
+    --sephora-hover: #d4af37;
+    --sephora-pink: #E6A4B4;
+}
+
+.sephora-logo-box {
+    max-width: 1225px;
+    width: 110%;
+    height: 110px;
+    background: var(--sephora-pink);
+    /* Uses primary color */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.sephora-logo-box img {
+    max-width: 230px;
+    height: auto;
+}
+
+.sephora-media-box {
+    max-width: 1125px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 25px;
+    background: var(--sephora-white);
+    border-left: 5px solid var(--sephora-hover);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sephora-table {
+    background: var(--depop-light-gray);
+
+
+}
+
+.sephora-table th {
+    background: var(--sephora-pink);
+    color: var(--sephora-black);
+    font-weight: bold;
+}
+
+.sephora-table tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.sephora-reflection {
+    max-width: 1125px;
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    background: var(--sephora-pink);
+    border-left: 5px solid var(--sephora-hover);
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--sephora-black);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sephora-reflection:hover,
+.sephora-media-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+.sephora-container {
+    max-width: 1225px;
+    width: 100%;
+    background: var(--sephora-black);
+    /* Dark gray for a unique background */
+    padding: 0px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+
+    /* Ensures text remains readable */
+}
+
+/* Ensure the table stretches horizontally */
+.part-2-table-container {
+    max-width: 90%;
+    overflow-x: auto;
+    /* Enables horizontal scrolling if needed */
+}
+
+.part-2-table {
+    width: 100%;
+    /* Forces the table to take up full container width */
+    table-layout: fixed;
+    /* Ensures even column width distribution */
+    border-collapse: collapse;
+    /* Removes extra spacing between table cells */
+}
+
+/* Make each column wider */
+.part-2-table th,
+.part-2-table td {
+    padding: 12px 20px;
+    /* More horizontal padding for spacing */
+    text-align: left;
+    /* Ensures text alignment is readable */
+    word-wrap: break-word;
+    /* Prevents text from overflowing */
+}
+
+/* Ensure header cells are clearly visible */
+.part-2-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Add alternating row background for better readability */
+.part-2-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Make table responsive */
+@media screen and (max-width: 1024px) {
+    .part-2-table {
+        display: block;
+        overflow-x: auto;
+        /* Enables scrolling for smaller screens */
+        white-space: nowrap;
+        /* Prevents text from breaking into multiple lines */
+    }
+}
+
+/* Section Background Colors */
+.part-1-container {
+    background-color: #FAF3DD;
+    /* Light cream for Part 1 */
+    padding: 50px 0;
+}
+
+.part-2-container {
+    background-color: #E5E5E5;
+    /* Light gray for Part 2 */
+    padding: 50px 0;
+}
+
+.part-3-container {
+    background-color: #D4E6F1;
+    /* Light blue for Part 3 */
+    padding: 50px 0;
+}
+
+.part-4-container {
+    background-color: #dacdae;
+    /* Light pink for Part 4 */
+    padding: 50px 0;
+}
+
+/* Add spacing so sections don’t look cramped */
+.part-1-container,
+.part-2-container,
+.part-3-container,
+.part-4-container {
+    width: 100%;
+}
+
+.table-platform-logo {
+    display: block;
+    margin: 8px auto;
+    /* Centers the image */
+    max-width: 150px;
+    /* Adjust size */
+    height: auto;
+}
