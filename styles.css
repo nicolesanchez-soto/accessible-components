@@ -942,7 +942,7 @@ html {
     display: block;
     margin: 8px auto;
     /* Centers the image */
-    max-width: 150.5px;
+    max-width: 150px;
     /* Adjust size */
     height: auto;
 }
